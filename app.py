@@ -6,10 +6,12 @@ from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import os
 
 app = Flask(__name__)
+file_path = os.path.abspath(os.getcwd())+"/database.db"
 app.config['SECRET_KEY'] = 'hey'
-app.config['SQLALCHEMY_DATABASE_URI'] = r"sqlite:///C:\Users\lenovo\Desktop\Github\ScheduleIt\database.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+file_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
 db = SQLAlchemy(app)
@@ -79,6 +81,6 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
