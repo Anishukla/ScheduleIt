@@ -8,8 +8,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'ThisIsASecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/anishukla/Desktop/hackerearth/StackHack/database.db'
+app.config['SECRET_KEY'] = 'hey'
+app.config['SQLALCHEMY_DATABASE_URI'] = r"sqlite:///C:\Users\lenovo\Desktop\Github\ScheduleIt\database.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
 db = SQLAlchemy(app)
