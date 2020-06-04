@@ -1,15 +1,17 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField
+from wtforms import StringField, PasswordField, BooleanField, TextAreaField, SelectField, DateField
 from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import os
 
 app = Flask(__name__)
+file_path = os.path.abspath(os.getcwd())+"/database.db"
 app.config['SECRET_KEY'] = 'hey'
-app.config['SQLALCHEMY_DATABASE_URI'] = r"sqlite:///C:\Users\lenovo\Desktop\Github\ScheduleIt\database.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+file_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
 db = SQLAlchemy(app)
@@ -24,9 +26,14 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80), unique=True)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.Text, nullable=False)
+    date = db.Column(db.Integer)
+    content = db.Column(db.Text, nullable=False)
+    WorkType = db.Column(db.Text, nullable=False)
+    priority = db.Column(db.Text)
+
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
@@ -36,6 +43,18 @@ class RegisterForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email(message="Invalid Email"),  Length(max=50)])
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
+
+class TaskForm(FlaskForm):
+    title = StringField('Title', validators=[InputRequired()])
+    content = TextAreaField('Content')
+    priority = SelectField('Priority', choices=[('Low','Low'), ('Medium', 'Medium'), ('High','High')], default='High')
+    date = DateField('Pick a Date')
+    WorkType = SelectField('Work-Type', choices=[('Personal','Personal'), ('Work', 'Work'), ('Others','Others')], default='Others')
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 @app.route('/')
 def index():
@@ -55,6 +74,11 @@ def login():
 
     return render_template('login.html', form=form)
 
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html', name=current_user.username)
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = RegisterForm()
@@ -68,17 +92,27 @@ def signup():
 
     return render_template('signup.html', form=form)
 
-@app.route('/dashboard')
+@app.route('/addtask', methods=['GET', 'POST'])
 @login_required
-def dashboard():
-    return render_template('dashboard.html', name=current_user.username)
+def addtask():
+    form = TaskForm()
+    if form.validate_on_submit():
+        flash('Your task has been created!', 'success')
+        new_task = Task(title=form.title.data, content=form.content.data, priority = form.priority.data,
+        date = form.date.data, WorkType = form.WorkType.data)
+        db.session.add(new_task)
+        db.session.commit()
+        return '<h1>New Task has been created</h1>'
+
+    return render_template('addtask.html', title='New Task',
+                           form=form, legend='New Task')
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index')) 
+    return redirect(url_for('index'))
 
-    
+
 if __name__ == '__main__':
     app.run(debug=True)

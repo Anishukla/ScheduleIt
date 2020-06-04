@@ -48,7 +48,7 @@ Dashboard
             </center>
             <center>
               <h1 class="page-header">{{ name }}</h1>
-            </center>          
+            </center>
           </div>
           <div >
             <nav class="nav nav-sidebar">
@@ -74,7 +74,7 @@ Dashboard
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="addtask.html">
+                  <a class="list-group-item" href="{{ url_for('addtask') }}">
                     <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; ADD TASK
                   </a>
                 </li>
@@ -128,8 +128,8 @@ Dashboard
                   <td>dolor</td>
                   <td>sit</td>
                 </tr>
-                
-                
+
+
               </tbody>
             </table>
           </div>
