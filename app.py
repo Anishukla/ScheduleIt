@@ -106,14 +106,13 @@ def addtask():
         db.session.commit()
         return redirect(url_for('dashboard'))
 
-    return render_template('addtask.html', title='New Task',
-                           form=form, legend='New Task')
+    return render_template('addtask.html', title='New Task', form=form, legend='New Task', name=current_user.username)
 
 
 @app.route('/personaltask', methods=['GET', 'POST'])
 @login_required
 def personaltask():
-    return render_template('personal.html')
+    return render_template('personal.html', name=current_user.username)
 
 
 @app.route('/logout')
