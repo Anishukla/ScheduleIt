@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, TextAreaField, SelectField, DateField
@@ -73,6 +73,7 @@ def login():
         return '<h1>Invalid Username or password</h1>'
 
     return render_template('login.html', form=form)
+    
 
 @app.route('/dashboard')
 @login_required
@@ -92,6 +93,7 @@ def signup():
 
     return render_template('signup.html', form=form)
 
+
 @app.route('/addtask', methods=['GET', 'POST'])
 @login_required
 def addtask():
@@ -99,13 +101,24 @@ def addtask():
     if form.validate_on_submit():
         flash('Your task has been created!', 'success')
         new_task = Task(title=form.title.data, content=form.content.data, priority = form.priority.data,
-        date = form.date.data, WorkType = form.WorkType.data)
+                date = form.date.data, WorkType = form.WorkType.data)
         db.session.add(new_task)
         db.session.commit()
-        return '<h1>New Task has been created</h1>'
+        return redirect(url_for('dashboard'))
 
     return render_template('addtask.html', title='New Task',
                            form=form, legend='New Task')
+
+
+"""
+@app.route('/personaltask', methods=['GET', 'POST'])
+@login_required
+def personaltask():
+    return render_template('personal.html', title=form.title, content=form.content,
+        priority=form.priority, date=form.date, WorkType=form.date, form=form)
+
+"""
+
 
 @app.route('/logout')
 @login_required

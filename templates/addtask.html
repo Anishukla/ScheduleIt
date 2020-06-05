@@ -11,9 +11,9 @@ Task Manager
 {% endblock %}
 {% block content %}
     <div class="container">
-
       <form class="form-signin" method="post" action="/addtask">
         <h2 class="form-signin-heading">Add Task</h2>
+        {{ form.hidden_tag() }}
         {{ wtf.form_field(form.title)}}
         {{ wtf.form_field(form.content)}}
         {{ wtf.form_field(form.priority)}}
