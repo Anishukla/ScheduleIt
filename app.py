@@ -6,6 +6,8 @@ from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from datetime import datetime
+import sqlite3
 import os
 
 app = Flask(__name__)
@@ -22,17 +24,19 @@ login_manager.login_view = 'login'
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(15), unique=True)
-    email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(80), unique=True)
+    username = db.Column(db.String(15), unique=True, nullable=False)
+    email = db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=True, nullable=False)
+    tasks = db.relationship('Task', backref='author', lazy=True)
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
-    date = db.Column(db.Integer)
+    date = db.Column(db.DateTime, nullable=False)
     content = db.Column(db.Text, nullable=False)
     WorkType = db.Column(db.Text, nullable=False)
     priority = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
@@ -46,11 +50,11 @@ class RegisterForm(FlaskForm):
 
 class TaskForm(FlaskForm):
     title = StringField('Title', validators=[InputRequired()])
-    content = TextAreaField('Content')
+    content = TextAreaField('Description')
     priority = SelectField('Priority', choices=[('Low','Low'), ('Medium', 'Medium'), ('High','High')], default='High')
-    date = DateField('Pick a Date')
+    date = DateField('DeadLine', validators=[InputRequired()])
     WorkType = SelectField('Work-Type', choices=[('Personal','Personal'), ('Work', 'Work'), ('Others','Others')], default='Others')
-
+    Other = StringField('WorkType (If Others)')
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -88,8 +92,8 @@ def signup():
         new_user = User(username=form.username.data, email=form.email.data, password= hashed_password)
         db.session.add(new_user)
         db.session.commit()
-
-        return '<h1>New User has been created</h1>'
+        return redirect(url_for('login'))
+        
 
     return render_template('signup.html', form=form)
 
@@ -99,11 +103,13 @@ def signup():
 def addtask():
     form = TaskForm()
     if form.validate_on_submit():
-        flash('Your task has been created!', 'success')
-        new_task = Task(title=form.title.data, content=form.content.data, priority = form.priority.data,
-                date = form.date.data, WorkType = form.WorkType.data)
+        if form.WorkType.data == 'Others':
+            new_task = Task(title=form.title.data, content=form.content.data, priority = form.priority.data, date = form.date.data, WorkType = form.Other.data, author=current_user)
+        else:
+            new_task = Task(title=form.title.data, content=form.content.data, priority = form.priority.data, date = form.date.data, WorkType = form.WorkType.data, author=current_user)
         db.session.add(new_task)
         db.session.commit()
+        flash('Your task has been created!', 'success')
         return redirect(url_for('dashboard'))
 
     return render_template('addtask.html', title='New Task', form=form, legend='New Task', name=current_user.username)
@@ -112,7 +118,22 @@ def addtask():
 @app.route('/personaltask', methods=['GET', 'POST'])
 @login_required
 def personaltask():
-    return render_template('personal.html', name=current_user.username)
+    tasks = Task.query.filter_by(user_id=current_user.id)
+    return render_template('personal.html', tasks=tasks ,name=current_user.username)
+
+
+@app.route('/worktask', methods=['GET', 'POST'])
+@login_required
+def worktask():
+    tasks = Task.query.filter_by(user_id=current_user.id)
+    return render_template('work.html', tasks=tasks ,name=current_user.username)
+
+
+@app.route('/othertask', methods=['GET', 'POST'])
+@login_required
+def othertask():
+    tasks = Task.query.filter_by(user_id=current_user.id)
+    return render_template('other.html', tasks=tasks ,name=current_user.username)
 
 
 @app.route('/logout')

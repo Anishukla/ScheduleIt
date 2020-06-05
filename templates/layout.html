@@ -58,27 +58,27 @@ Dashboard
               </a>
               <ul class="nav nav-sidebar">
                 <li class="active has-sub">
-                  <a class="list-group-item" href="#">
+                  <a class="list-group-item" href="{{ url_for('dashboard') }}">
                     &nbsp;<i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp; DASHBOARD
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="personal.html">
+                  <a class="list-group-item" href="{{ url_for('personaltask') }}">
                     <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; PERSONAL
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="work.html">
+                  <a class="list-group-item" href="{{ url_for('worktask') }}">
                     <i class="fa fa-tasks fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; WORK
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="others.html">
+                  <a class="list-group-item" href="{{ url_for('othertask') }}">
                     <i class="fa fa-caret-square-o-down fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; OTHERS
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="addtask.html">
+                  <a class="list-group-item" href="{{ url_for('addtask') }}">
                     <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; ADD TASK
                   </a>
                 </li>

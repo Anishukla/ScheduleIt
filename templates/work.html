@@ -1,17 +1,14 @@
-{% extends "layout.html" %}
-
-{% import  "bootstrap/wtf.html" as wtf %}
+{% extends "bootstrap/base.html" %}
 
 {% block title %}
-ADD TO-DO
+Dashboard
 {% endblock %}
 
 {% block styles %}
 {{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='personal.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
-<link rel="stylesheet" href="{{url_for('.static', filename='addtask.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -60,7 +57,7 @@ ADD TO-DO
                 <i class="fa fa-chevron-down fa-fw" aria-hidden="true"></i>
               </a>
               <ul class="nav nav-sidebar">
-                <li>
+                <li >
                   <a class="list-group-item" href="{{ url_for('dashboard') }}">
                     &nbsp;<i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp; DASHBOARD
                   </a>
@@ -71,7 +68,7 @@ ADD TO-DO
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="{{ url_for('worktask') }}">
+                  <a class="list-group-item" href="#">
                     <i class="fa fa-tasks fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; WORK
                   </a>
                 </li>
@@ -81,7 +78,7 @@ ADD TO-DO
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="#">
+                  <a class="list-group-item" href="{{ url_for('addtask') }}">
                     <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; ADD TASK
                   </a>
                 </li>
@@ -90,18 +87,31 @@ ADD TO-DO
           </div>
         </nav>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <form class="form-signin" method="post" action="/addtask">
-            <center><h2 class="form-signin-heading">Add Task</h2></center>
-                {{ form.hidden_tag() }}
-                {{ wtf.form_field(form.title)}}
-                {{ wtf.form_field(form.content)}}
-                {{ wtf.form_field(form.priority)}}
-                {{ wtf.form_field(form.date)}}
-                {{ wtf.form_field(form.WorkType)}}
-                {{ wtf.form_field(form.Other)}}
-                <button class="btn btn-lg btn-primary btn-block" type="submit">ADD</button>
-              </form>
-         </div>
+          	<center><h1>Work TO-DO Tasks</h1></center>
+          	<table>
+          		<tr>
+          			<th>Title</th>
+          			<th>Content</th>
+          			<th>Deadline</th>
+          			<th>Priority</th>
+                <th>Status</th>
+          		</tr>
+          		{% for task in tasks %}
+          			{% if task.WorkType == "Work"%}
+          				<tr>
+		          			<td>{{task.title}}</td>
+		          			<td>{{task.content}}</td>
+		          			<td>{{task.date}}</td>
+		          			<td>{{task.priority}}</td>
+                    <td>status</td>
+                    <td>Delete</td>
+                    <td>Update</td>
+		          		</tr>
+		          	{% endif %}
+		        {% endfor %}
+          	</table>
+        </div>
       </div>
     </div>
+
 {% endblock %}
