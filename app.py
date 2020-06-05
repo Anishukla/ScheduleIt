@@ -73,7 +73,7 @@ def login():
         return '<h1>Invalid Username or password</h1>'
 
     return render_template('login.html', form=form)
-    
+
 
 @app.route('/dashboard')
 @login_required
@@ -110,14 +110,10 @@ def addtask():
                            form=form, legend='New Task')
 
 
-"""
 @app.route('/personaltask', methods=['GET', 'POST'])
 @login_required
 def personaltask():
-    return render_template('personal.html', title=form.title, content=form.content,
-        priority=form.priority, date=form.date, WorkType=form.date, form=form)
-
-"""
+    return render_template('personal.html')
 
 
 @app.route('/logout')
