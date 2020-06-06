@@ -94,7 +94,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
-        
+
 
     return render_template('signup.html', form=form)
 
@@ -135,6 +135,13 @@ def worktask():
 def othertask():
     tasks = Task.query.filter_by(user_id=current_user.id)
     return render_template('other.html', tasks=tasks ,name=current_user.username)
+
+@app.route("/<int:task_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    return render_template('checktask.html', title='Update Task',
+                           task=task, legend='Update Task')
 
 
 @app.route('/logout')

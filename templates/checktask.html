@@ -1,16 +1,17 @@
-{% extends "bootstrap/base.html" %}
+{% extends "layout.html" %}
+
+{% import  "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-Personal TO-DO
+ADD TO-DO
 {% endblock %}
 
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='personal.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='addtask.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -59,13 +60,13 @@ Personal TO-DO
                 <i class="fa fa-chevron-down fa-fw" aria-hidden="true"></i>
               </a>
               <ul class="nav nav-sidebar">
-                <li >
+                <li>
                   <a class="list-group-item" href="{{ url_for('dashboard') }}">
                     &nbsp;<i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp; DASHBOARD
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="#">
+                  <a class="list-group-item" href="{{ url_for('personaltask') }}">
                     <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; PERSONAL
                   </a>
                 </li>
@@ -80,7 +81,7 @@ Personal TO-DO
                   </a>
                 </li>
                 <li>
-                  <a class="list-group-item" href="{{ url_for('addtask') }}">
+                  <a class="list-group-item" href="#">
                     <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; ADD TASK
                   </a>
                 </li>
@@ -89,34 +90,18 @@ Personal TO-DO
           </div>
         </nav>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          	<center><h1>Personal TO-DO List</h1></center>
-          	<table>
-          		<thead>
-	          		<tr>
-	          			<th>Title</th>
-	          			<th>Deadline</th>
-	          			<th>Priority</th>
-	          			<th>Status</th>
-	          		</tr>
-          		</thead>
-          		<tbody>
-	          		{% for task in tasks %}
-	          			{% if task.WorkType == "Personal"  %}
-	          				<tr>
-			          			<td>{{task.title}}</td>
-			          			<td>{{task.date}}</td>
-			          			<td>{{task.priority}}</td>
-			          			<td>status</td>
-			          			<td><a href="{{ url_for('update_task', task_id=task.id) }}">Update</a></td>
-			          		</tr>
-			          		<tr class="spacer">
-			          		<tr>
-			          	{% endif %}
-			        {% endfor %}
-		        </tbody>
-          	</table>
-        </div>
+            <form class="form-signin">
+            <center><h2 class="form-signin-heading">{{task.title}}</h2></center>
+              <h4 align= "right">On/By:- {{task.date.strftime('%Y-%m-%d')}}</h4>
+              <h4>Description:- {{task.content}}</h4>
+              <h4></h4>
+
+              <h6>Worktype Marked:- {{task.WorkType}}</h6>
+
+
+                <button class="btn btn-lg btn-primary btn-block" href="#" onclick="javascript:window.history.back(-1);return false;">Back</button>
+              </form>
+         </div>
       </div>
     </div>
-
 {% endblock %}

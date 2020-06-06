@@ -50,7 +50,7 @@ Work TO-DO
             </center>
             <center>
               <h1 class="page-header">{{ name }}</h1>
-            </center>          
+            </center>
           </div>
           <div>
             <div class="nav nav-sidebar">
@@ -108,7 +108,7 @@ Work TO-DO
     		          			<td>{{task.date}}</td>
     		          			<td>{{task.priority}}</td>
                         <td>status</td>
-                        <td><a href="">Update</a></td>
+                        <td><a href="{{ url_for('update_task', task_id=task.id) }}">Update</a></td>
     		          		</tr>
                       <tr class="spacer">
                       <tr>
