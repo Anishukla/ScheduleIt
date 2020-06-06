@@ -170,8 +170,10 @@ body
 
 .main 
 {
-    padding-right: 40px;
-    padding-left: 40px;
+
+  margin-top: 1px;
+  padding: 30px;
+  right: 20px;
 }
 .main h1
 {
@@ -184,33 +186,40 @@ body
 }
 .main table
 {
-  border: 2px solid red;
   width: 100%;
 }
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders 
+.main thead tr
 {
-  margin-bottom: 30px;
+  font-size: 20px;
+  font-family: 'PT Serif', serif;
+}
+.main tbody tr
+{
+  background-color: white;
+  font-family: 'IBM Plex Serif', serif;
+}
+.main tbody .spacer
+{
+  height: 20px;
+}
+.main thead th
+{
+  padding: 10px;
   text-align: center;
 }
-.placeholders h4 
+.main tbody td
 {
-  margin-bottom: 0;
+  padding: 21px;
+  text-align: center;
 }
-.placeholder 
+.main tbody td a
 {
-  margin-bottom: 20px;
+  text-decoration: none;
+  padding: 8px;
+  background-color: blue;
+  color: white;
+  border-radius: 27%;
 }
-.placeholder img 
-{
-  display: inline-block;
-  border-radius: 50%;
-}
-
 
 @media only screen and (max-width: 770px)
 {
