@@ -10,7 +10,10 @@ ADD TO-DO
 {{super()}}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{url_for('.static', filename='addtask.css')}}">
 {% endblock %}
 
@@ -90,17 +93,17 @@ ADD TO-DO
           </div>
         </nav>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <form class="form-signin" method="post" action="/addtask">
-            <center><h2 class="form-signin-heading">Add Task</h2></center>
+          <form class="form-signin" method="post" action="/addtask">
+            <center><h2 class="form-signin-heading">ADD YOUR TO-D0</h2></center>
                 {{ form.hidden_tag() }}
-                {{ wtf.form_field(form.title)}}
-                {{ wtf.form_field(form.content)}}
-                {{ wtf.form_field(form.priority)}}
-                {{ wtf.form_field(form.date)}}
-                {{ wtf.form_field(form.WorkType)}}
-                {{ wtf.form_field(form.Other)}}
+                {{ wtf.form_field(form.title, class='form-control', placeholder='Enter the Title')}}
+                {{ wtf.form_field(form.content, class='form-control', placeholder='Enter the Content of the task')}}
+                {{ wtf.form_field(form.priority, class='form-control')}}
+                {{ wtf.form_field(form.date, class='form-control', placeholder='Enter Deadline')}}
+                {{ wtf.form_field(form.WorkType, class='form-control')}}
+                {{ wtf.form_field(form.Other, class='form-control', placeholder='Enter WorkType (if Others)')}}
                 <button class="btn btn-lg btn-primary btn-block" type="submit">ADD</button>
-              </form>
+            </form>
          </div>
       </div>
     </div>

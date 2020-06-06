@@ -166,51 +166,32 @@ body
 /*
  * Main content
  */
-
 .main 
 {
-  padding: 20px;
+  padding: 10px;
 }
-
-.main 
-  {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-
-.main .page-header 
+.main .form-signin-heading
 {
-  margin-top: -18px;
-  padding:15px;  
-  font-size: 65px;
-  color: ;
-  font-family: 'Tenali Ramakrishna', sans-serif;
+  padding: 6px;
+  font-size: 30px;
+  font-family: 'Fredoka One', cursive;
 }
-
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders 
+.form-signin 
 {
-  margin-bottom: 30px;
-  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: -10px;
 }
-.placeholders h4 
+.form-signin .form-control 
 {
-  margin-bottom: 0;
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 15px;
 }
-.placeholder 
-{
-  margin-bottom: 20px;
-}
-.placeholder img 
-{
-  display: inline-block;
-  border-radius: 50%;
-}
-
 
 @media only screen and (max-width: 770px)
 {
