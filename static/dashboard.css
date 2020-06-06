@@ -170,48 +170,103 @@ body
 .main 
 {
   padding: 20px;
+  margin-top: 1px;
+  right: 20px;
 }
-
-.main 
-  {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
 
 .main .page-header 
 {
   margin-top: -18px;
   padding:15px;  
   font-size: 65px;
-  color: ;
+  color: #000066;
   font-family: 'Tenali Ramakrishna', sans-serif;
 }
-
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders 
+.main .content-active 
 {
-  margin-bottom: 30px;
+  background-color: white;
+  float: left;
+  width: 48%;
+  height: 510px;
+
+  overflow: auto;
+  
+}
+.main .content-archive 
+{
+  background-color: white;
+  float: right;
+  width: 48%;
+  height: 510px;
+
+  overflow: auto;
+}
+.main .content-active h2
+{
   text-align: center;
+  padding: 5px;
+  background-color: #33ff33;
+  color: black;
+  border-radius: 15px;
+  font-family: 'IBM Plex Serif', serif; 
 }
-.placeholders h4 
+.main .content-active table
 {
-  margin-bottom: 0;
+  width: 100%;
+  margin-bottom: 25px;
+  margin-top: 20px;
 }
-.placeholder 
+.main .content-active table thead tr th
 {
-  margin-bottom: 20px;
+  padding: 10px; 
+  text-align: center;
+  color: white;
+  background-color: #002db3;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
 }
-.placeholder img 
+.main .content-active table tbody tr td
 {
-  display: inline-block;
-  border-radius: 50%;
+  padding: 10px; 
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-family: 'Ubuntu Condensed', sans-serif;
 }
-
-
+.main .content-archive h2
+{
+  text-align: center;
+  padding: 5px;
+  background-color: #b8b894;
+  color: black;
+  border-radius: 15px;
+  font-family: 'IBM Plex Serif', serif; 
+}
+.main .content-archive table
+{
+  width: 100%;
+  margin-bottom: 25px;
+  margin-top: 20px;
+}
+.main .content-archive table thead tr th
+{
+  padding: 10px; 
+  text-align: center;
+  color: white;
+  background-color: #002db3;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
+}
+.main .content-archive table tbody tr td
+{
+  padding: 10px; 
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
 @media only screen and (max-width: 770px)
 {
   .row

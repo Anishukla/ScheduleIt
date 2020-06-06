@@ -82,7 +82,8 @@ def login():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html', name=current_user.username)
+    tasks = Task.query.filter_by(user_id=current_user.id)
+    return render_template('dashboard.html', tasks= tasks, name=current_user.username)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

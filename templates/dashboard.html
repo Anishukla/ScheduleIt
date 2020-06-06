@@ -8,6 +8,10 @@ Dashboard
 <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -87,7 +91,48 @@ Dashboard
         </nav>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <center><h1 class="page-header">Welcome, {{ name }}</h1></center>
-
+          <div class="row">
+          <div class="col-md-5 col-md-offset-0 content-active">
+            <h2>ACTIVE</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                {% for task in tasks %}
+                  <tr>
+                    <td>{{task.title}}</td>
+                    <td>status</td>
+                  </tr>
+                {% endfor %}  
+                
+              </tbody>
+            </table>
+          </div>
+          <div class=" col-md-5 col-md-offset-0 content-archive">
+            <h2>ARCHIVED</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for task in tasks %}
+                  <tr>
+                    <td>{{task.title}}</td>
+                    <td>Over</td>
+                  </tr>
+                {% endfor %} 
+              </tbody>
+            </table>
+          </div>
+          </div>
         </div>
       </div>
     </div>
