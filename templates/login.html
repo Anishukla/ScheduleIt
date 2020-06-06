@@ -8,12 +8,22 @@ Login
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
+    <nav class="navbar">
+        <div class="logo">
+          <h3><span>Schedule</span>It</h3>
+        </div>
+        <ul>
+          <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+        </ul>
+    </nav>
     <div class="container">
       <form class="form-signin" method="post" action="/login">
-        <h2 class="form-signin-heading">SIGN IN</h2>
+        <h2 class="form-signin-heading">LOGIN</h2>
         {{ form.hidden_tag() }}
         {{ wtf.form_field(form.username)}}
         {{ wtf.form_field(form.password)}}

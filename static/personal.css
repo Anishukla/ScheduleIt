@@ -220,7 +220,11 @@ body
   color: white;
   border-radius: 27%;
 }
+.main .arcup
+{
 
+  background-color: grey;
+}
 @media only screen and (max-width: 770px)
 {
   .row

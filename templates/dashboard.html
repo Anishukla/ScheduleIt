@@ -97,18 +97,20 @@ Dashboard
             <table>
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Status</th>
+                  <th class="title">Title</th>
+                  <th class="status">Status</th>
                 </tr>
               </thead>
               <tbody>
               
                 {% for task in tasks %}
-                  <tr>
-                    <td>{{task.title}}</td>
-                    <td>status</td>
-                  </tr>
-                {% endfor %}  
+                  {% if (task.status == "NEW" or task.status == "IN PROGRESS") and tdate <= task.date %}
+                    <tr>
+                      <td class="title">{{task.title}}</td>
+                      <td class="status">{{task.status}}</td>
+                    </tr>
+                  {% endif %}
+                {% endfor %} 
                 
               </tbody>
             </table>
@@ -118,16 +120,22 @@ Dashboard
             <table>
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Status</th>
+                  <th class="title">Title</th>
+                  <th class="status">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {% for task in tasks %}
+                  {% if (task.status != "NEW" and task.status != "IN PROGRESS") or tdate > task.date %}
                   <tr>
-                    <td>{{task.title}}</td>
-                    <td>Over</td>
+                    <td class="title">{{task.title}}</td>
+                    {% if tdate > task.date and (task.status !="CANCELLED" or task.status !="COMPLETED") %}
+                      <td class="status">NOT COMPLETED</td>
+                    {% else %}
+                      <td class="status">{{task.status}}</td>
+                    {% endif %}
                   </tr>
+                  {% endif %}
                 {% endfor %} 
               </tbody>
             </table>

@@ -107,8 +107,16 @@ Work TO-DO
     		          			<td>{{task.title}}</td>
     		          			<td>{{task.date}}</td>
     		          			<td>{{task.priority}}</td>
-                        <td>status</td>
-                        <td><a href="{{ url_for('update_task', task_id=task.id) }}">Update</a></td>
+                        {% if tdate > task.date and (task.status !="CANCELLED" or task.status !="COMPLETED") %}
+                          <td class="status">NOT COMPLETED</td>
+                        {% else %}
+                          <td class="status">{{task.status}}</td>
+                        {% endif %}
+                        {% if (task.status == "NEW" or task.status == "IN PROGRESS") and tdate <= task.date %}
+                          <td><a href="{{ url_for('update_task', task_id=task.id) }}">Update</a></td>
+                        {% else %}
+                          <td><a class="arcup" href="#">Update</a></td>
+                        {% endif %}
     		          		</tr>
                       <tr class="spacer">
                       <tr>

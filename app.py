@@ -6,8 +6,7 @@ from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from datetime import datetime
-import sqlite3
+from datetime import date
 import os
 
 app = Flask(__name__)
@@ -32,10 +31,11 @@ class User(UserMixin, db.Model):
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
-    date = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.Date, nullable=False)
     content = db.Column(db.Text, nullable=False)
     WorkType = db.Column(db.Text, nullable=False)
     priority = db.Column(db.Text)
+    status = db.Column(db.Text, nullable=False, default='NEW')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 class LoginForm(FlaskForm):
@@ -83,7 +83,7 @@ def login():
 @login_required
 def dashboard():
     tasks = Task.query.filter_by(user_id=current_user.id)
-    return render_template('dashboard.html', tasks= tasks, name=current_user.username)
+    return render_template('dashboard.html', tasks= tasks, name=current_user.username, tdate=date.today())
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -120,28 +120,27 @@ def addtask():
 @login_required
 def personaltask():
     tasks = Task.query.filter_by(user_id=current_user.id)
-    return render_template('personal.html', tasks=tasks ,name=current_user.username)
+    return render_template('personal.html', tasks=tasks ,name=current_user.username, tdate=date.today())
 
 
 @app.route('/worktask', methods=['GET', 'POST'])
 @login_required
 def worktask():
     tasks = Task.query.filter_by(user_id=current_user.id)
-    return render_template('work.html', tasks=tasks ,name=current_user.username)
+    return render_template('work.html', tasks=tasks ,name=current_user.username, tdate=date.today())
 
 
 @app.route('/othertask', methods=['GET', 'POST'])
 @login_required
 def othertask():
     tasks = Task.query.filter_by(user_id=current_user.id)
-    return render_template('other.html', tasks=tasks ,name=current_user.username)
+    return render_template('other.html', tasks=tasks ,name=current_user.username, tdate=date.today())
 
 @app.route("/<int:task_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
-    return render_template('checktask.html', title='Update Task',
-                           task=task, legend='Update Task')
+    return render_template('checktask.html', title='Update Task', task=task, legend='Update Task', name=current_user.username)
 
 
 @app.route('/logout')

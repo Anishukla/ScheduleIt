@@ -267,6 +267,14 @@ body
   font-size: 18px;
   font-family: 'Ubuntu Condensed', sans-serif;
 }
+.main .title
+{
+  width: 71%;
+}
+.main .status
+{
+  width: 29%;
+}
 @media only screen and (max-width: 770px)
 {
   .row

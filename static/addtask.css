@@ -181,6 +181,9 @@ body
   max-width: 500px;
   margin: 0 auto;
   margin-top: -10px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'IBM Plex Serif', serif; 
 }
 .form-signin .form-control 
 {
@@ -192,7 +195,11 @@ body
   padding: 10px;
   font-size: 15px;
 }
-
+.main .btn
+{
+  width: 120px;
+  margin-left: 197px;
+}
 @media only screen and (max-width: 770px)
 {
   .row
