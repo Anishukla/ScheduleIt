@@ -10,8 +10,7 @@ ADD TO-DO
 {{super()}}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
-<link rel="stylesheet" href="{{url_for('.static', filename='addtask.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='checktask.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -89,19 +88,27 @@ ADD TO-DO
             </div>
           </div>
         </nav>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <form class="form-signin">
-            <center><h2 class="form-signin-heading">{{task.title}}</h2></center>
-              <h4 align= "right">On/By:- {{task.date.strftime('%Y-%m-%d')}}</h4>
-              <h4>Description:- {{task.content}}</h4>
-              <h4></h4>
+        <div class = "col-sm-9 col-sm-offset-6 col-md-10 col-md-offset-2 main">
+          <button type= "button" class="btn btn-primary" href="#" onclick="javascript:window.history.back(-1);return false;">Back</button>
+          <div class="card">
 
-              <h6>Worktype Marked:- {{task.WorkType}}</h6>
+          	<div class="card-inner">
+          		<div class="card-front">
 
+          			<h2>{{ task.WorkType }}</h2>
+          		</div>
 
-                <button class="btn btn-lg btn-primary btn-block" href="#" onclick="javascript:window.history.back(-1);return false;">Back</button>
-              </form>
-         </div>
-      </div>
-    </div>
+          		<!-- Decorate card back side -->
+          		<div class="card-back">
+          			<h1>{{task.title}}</h1>
+          			<p>Description:- {{task.content}}</p>
+
+          			<h5> Deadline:-
+          			{{task.date.strftime('%Y-%m-%d')}}
+          			</h5>
+          		</div>
+          	</div>
+          </div>
+        </div>
+
 {% endblock %}
