@@ -188,7 +188,7 @@ body
   float: left;
   width: 48%;
   height: 510px;
-
+  margin-left: 2px;
   overflow: auto;
   
 }
@@ -198,7 +198,6 @@ body
   float: right;
   width: 48%;
   height: 510px;
-
   overflow: auto;
 }
 .main .content-active h2
@@ -275,11 +274,39 @@ body
 {
   width: 29%;
 }
+@media only screen and (max-width: 1400px)
+{
+  .main .content-active 
+  {
+    background-color: white;
+    float: left;
+    width: 45%;
+    height: 510px;
+    margin-left: 40px;
+    overflow: auto;
+    
+  }
+  .main .content-archive 
+  {
+    background-color: white;
+    float: right;
+    width: 45%;
+    height: 510px;
+    overflow: auto;
+  }
+}
+@media only screen and (max-width: 1100px)
+{
+  .main
+  {
+    margin-left: 200px; 
+  }
+}
 @media only screen and (max-width: 770px)
 {
   .row
   {
-    margin-top: 98px;
+    margin-top: 15px;
   }
   .sidebar
   {
@@ -368,8 +395,30 @@ body
   .main 
   {
     width: 100%;
-    background-image: linear-gradient(to bottom right,red, orange);
+    margin: 0px;
   }
 
+}
+@media only screen and (max-width: 420px)
+{
+  .main .page-header
+  {
+    margin-top: 90px;
+    font-size: 40px;
+    margin-left: 20px;
+  }
+  .main .content-active
+  {
+    float: none;
+    width: 80%;
+    margin-left: 60px;
+    margin-bottom: 30px;
+  }
+  .main .content-archive
+  {
+    width: 80%;
+    float: none;
+    margin-left: 60px;
+  }
 }
 
