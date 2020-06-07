@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, TextAreaField, SelectField, DateField
@@ -116,7 +116,7 @@ def addtask():
         db.session.commit()
         flash('Your task has been created!', 'success')
         return redirect(url_for('dashboard'))
-    
+
     return render_template('addtask.html', title='New Task', form=form, legend='New Task', name=current_user.username)
 
 
@@ -144,6 +144,17 @@ def othertask():
 @login_required
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
+    if request.method == 'POST':
+        if request.button.get('INPROGRESS') == 'INPROGRESS':
+            task.status = "IN PROGRESS"
+        elif request.button.get('COMPLETED') == 'COMPLETED':
+            task.status = "COMPLETED"
+        elif request.button.get('NOT') == 'NOT':
+            task.status = "Not Started"
+        elif request.button.get('CANCELLED') == 'CANCELLED':
+            task.status = "CANCELLED"
+
+
     return render_template('checktask.html', title='Update Task', task=task, legend='Update Task', name=current_user.username)
 
 
