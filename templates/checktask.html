@@ -94,16 +94,17 @@ ADD TO-DO
 
           	<div class="card-inner">
           		<div class="card-front">
-
-          			<h2>{{ task.WorkType }}</h2>
+          			<h1>{{ task.WorkType }}</h1>
+                <h3 align="center">Hover Card for details</h3>
           		</div>
 
           		<!-- Decorate card back side -->
           		<div class="card-back">
           			<h1>{{task.title}}</h1>
-          			<p>Description:- {{task.content}}</p>
-
-          			<h5> Deadline:-
+                <div class="content">
+                  Description: {{task.content}}
+                </div>
+          			<h5> Deadline:
           			{{task.date.strftime('%Y-%m-%d')}}
           			</h5>
           		</div>
@@ -127,7 +128,9 @@ ADD TO-DO
               <input type= "radio" class="btn btn-danger"   name="STATUS" value="CANCELLED">CANCEL</input>
             </div>
              <div class="column">
-              <input type= "submit" class="btn btn-danger"  value="UPDATE"></input>
+               <div class="sahi">
+                 <input type= "submit" class="btn btn-danger"  value="UPDATE"></input>
+               </div>
             </div>
             </form>
           </div>

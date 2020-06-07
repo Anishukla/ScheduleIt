@@ -167,7 +167,6 @@ body
 .main
 {
   padding: 20px;
-  border: 2px solid red;
   margin-top: 2px;
 }
 
@@ -206,12 +205,12 @@ body
     color: black;
 }
 
-.card-front h2{
+.card-front h1{
   margin-top: 120px;
 }
 
 .card-back {
-    background-image: url('https://media.gettyimages.com/photos/notes-to-do-list-christmas-composition-background-wallpaper-pine-picture-id878894350');
+    background-image: url('https://media.istockphoto.com/photos/notepad-open-with-white-blank-page-for-writing-idea-or-todo-list-a-picture-id867672394?k=6&m=867672394&s=612x612&w=0&h=I6aKquFSaiNTdhqjxgcfhRDY5mmaPjU8qnmoCBaVnug=');
     background-size: cover;
     background-color: #7e92ed;
     transform: rotateY(180deg);
@@ -220,19 +219,25 @@ body
 
 
 .card-back h1{
-    padding: 10px;
-    margin-top: 50px;
-    border: 2px solid red;
+    align: left;
+    margin-top: 58px;
+    width: 200px;
+    height: 40px;
+    margin-left: 60px;
+    align: center;
 }
 
-.card-back p{
-    padding: 10px;
-    border: 2px solid red;
+.card-back .content{
+    margin-left: 60px;
+    align: center;
+    overflow: auto;
+    width: 200px;
+    height: 168px;
 }
 
 .card-back h5{
-    padding: 10px;
-    border: 2px solid red;
+    margin-left: 60px;
+    width:120px;
 }
 
 .column {
@@ -249,14 +254,19 @@ body
 
 .intention{
   margin-left: 88px;
+
 }
 
+.sahi{
+  margin-top: 38px;
+  margin-left: 398px;
+}
 
 
 
 @media only screen and (max-width: 1400px)
 {
-  .main .content-active 
+  .main .content-active
   {
     background-color: white;
     float: left;
@@ -264,9 +274,9 @@ body
     height: 510px;
     margin-left: 40px;
     overflow: auto;
-    
+
   }
-  .main .content-archive 
+  .main .content-archive
   {
     background-color: white;
     float: right;
@@ -279,7 +289,7 @@ body
 {
   .main
   {
-    margin-left: 200px; 
+    margin-left: 200px;
   }
 }
 @media only screen and (max-width: 770px)
@@ -295,7 +305,7 @@ body
     margin: 0px;
     padding: 0px;
     overflow: visible;
-    margin-top: -2px; 
+    margin-top: -2px;
   }
   .row img
   {
@@ -324,14 +334,14 @@ body
   .nav-sidebar ul
   {
     padding: 0px;
-    margin: 0px; 
+    margin: 0px;
     height: 41px;
     width: 100%;
     margin-top: 0px;
     background-color: black;
     list-style: none;
   }
-  .nav-sidebar ul li 
+  .nav-sidebar ul li
   {
     padding: 0px;
     text-align: center;
@@ -347,7 +357,7 @@ body
     font-size: 10px;
     text-align: center;
     padding: 12px;
-    margin: 0px; 
+    margin: 0px;
     border: 1px solid black;
   }
   .nav-sidebar ul li a i
@@ -359,7 +369,7 @@ body
     background: transparent;
   }
 
-  .main 
+  .main
   {
     width: 100%;
     margin: 0px;
@@ -373,7 +383,7 @@ body
 }
 @media only screen and (max-width: 530px)
 {
- 
+
   .nav-sidebar ul li a
   {
     background-color: transparent;
@@ -381,9 +391,9 @@ body
     font-size: 8px;
     text-align: center;
     padding: 0px;
-    margin: 0px; 
+    margin: 0px;
     margin-top: 10px;
-  } 
+  }
   .main .content-active
   {
     float: none;
