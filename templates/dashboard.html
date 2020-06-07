@@ -95,7 +95,7 @@ Dashboard
               <tbody>
               
                 {% for task in tasks %}
-                  {% if (task.status == "NEW" or task.status == "IN PROGRESS") and tdate <= task.date %}
+                  {% if (task.status == "NEW" or task.status == "IN PROGRESS" or task.status == "NOT STARTED") and tdate <= task.date %}
                     <tr>
                       <td class="title">{{task.title}}</td>
                       <td class="status">{{task.status}}</td>
@@ -117,7 +117,7 @@ Dashboard
               </thead>
               <tbody>
                 {% for task in tasks %}
-                  {% if (task.status != "NEW" and task.status != "IN PROGRESS") or tdate > task.date %}
+                  {% if (task.status != "NEW" and task.status != "IN PROGRESS" and task.status != "NOT STARTED") or tdate > task.date %}
                   <tr>
                     <td class="title">{{task.title}}</td>
                     {% if tdate > task.date and (task.status !="CANCELLED" or task.status !="COMPLETED") %}

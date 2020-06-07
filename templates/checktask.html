@@ -113,18 +113,23 @@ ADD TO-DO
         <div class = "col-sm-9 col-sm-offset-6 col-md-10 col-md-offset-2 main">
           <div class="intention">
           <div class="row">
+            <form method="POST" action="./update">
             <div class="column">
-              <button type= "button" class="btn btn-primary" href="#" value="INPROGRESS" name="INPROGRESS">IN PROGRESS</button>
+              <input type= "radio" class="btn btn-primary"   name="STATUS" value="IN PROGRESS">IN PROGRESS</input>
             </div>
             <div class="column">
-              <button type= "button" class="btn btn-success" href="#" value="COMPLETED" name="COMPLETED">COMPLETED</button>
+              <input type= "radio" class="btn btn-success"   name="STATUS" value="COMPLETED">COMPLETED</input>
             </div>
             <div class="column">
-              <button type= "button" class="btn btn-warning" href="#" value="NOT" name="NOT">NOT STARTED</button>
+              <input type= "radio" class="btn btn-warning"   name="STATUS" value="NOT STARTED">NOT STARTED</input>
             </div>
             <div class="column">
-              <button type= "button" class="btn btn-danger" href="#" value="CANCELLED" name="CANCELLED">CANCEL</button>
+              <input type= "radio" class="btn btn-danger"   name="STATUS" value="CANCELLED">CANCEL</input>
             </div>
+             <div class="column">
+              <input type= "submit" class="btn btn-danger"  value="UPDATE"></input>
+            </div>
+            </form>
           </div>
         </div>
       </div>

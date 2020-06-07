@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from datetime import date
+from sqlalchemy import update
 import os
 
 app = Flask(__name__)
@@ -145,15 +146,10 @@ def othertask():
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
     if request.method == 'POST':
-        if request.button.get('INPROGRESS') == 'INPROGRESS':
-            task.status = "IN PROGRESS"
-        elif request.button.get('COMPLETED') == 'COMPLETED':
-            task.status = "COMPLETED"
-        elif request.button.get('NOT') == 'NOT':
-            task.status = "Not Started"
-        elif request.button.get('CANCELLED') == 'CANCELLED':
-            task.status = "CANCELLED"
-
+        status_u = request.form['STATUS']
+        task_status=Task.query.filter_by(user_id=current_user.id, id=task_id).update({Task.status: status_u})
+        db.session.commit()
+        return redirect(url_for('dashboard'))
 
     return render_template('checktask.html', title='Update Task', task=task, legend='Update Task', name=current_user.username)
 
