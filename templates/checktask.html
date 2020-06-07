@@ -22,17 +22,12 @@ ADD TO-DO
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li>
-              <a  href="#">
-                <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-                Settings
-                <i class="fa fa-chevron-down fa-fw" aria-hidden="true"></i>
+              <a href="{{ url_for('logout') }}">
+              <i class="fa fa-power-off fa-fw" aria-hidden="true"></i>
+              Log Out
               </a>
-              <ul>
-                <li><a href="{{ url_for('logout') }}">Change Username</a></li>
-                <li><a href="{{ url_for('logout') }}">Change Password</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-              </ul>
             </li>
+          </ul>
             <!--<form class="navbar-form navbar-right">
               <input type="text" class="form-control" placeholder="Search...">
             </form>
@@ -102,7 +97,8 @@ ADD TO-DO
           		<div class="card-back">
           			<h1>{{task.title}}</h1>
                 <div class="content">
-                  Description: {{task.content}}
+                  <h6>DESCRIPTION:</h6>
+                   {{task.content}}
                 </div>
           			<h5> Deadline:
           			{{task.date.strftime('%Y-%m-%d')}}
@@ -113,26 +109,24 @@ ADD TO-DO
         </div>
         <div class = "col-sm-9 col-sm-offset-6 col-md-10 col-md-offset-2 main">
           <div class="intention">
-          <div class="row">
-            <form method="POST" action="./update">
-            <div class="column">
-              <input type= "radio" class="btn btn-primary"   name="STATUS" value="IN PROGRESS">IN PROGRESS</input>
+            <center><h2>UPDATE "{{task.title}}" STATUS</h2></center>
+            
+            <div class="row">
+              <form method="POST" action="./update">
+                <div class="column">
+                  <button type= "radio" class="btn btn-primary"   name="STATUS" value="IN PROGRESS">IN PROGRESS</button>
+                </div>
+                <div class="column">
+                  <button type= "radio" class="btn btn-success"   name="STATUS" value="COMPLETED">COMPLETED</button>
+                </div>
+                <div class="column">
+                  <button type= "radio" class="btn btn-warning"   name="STATUS" value="NOT STARTED">NOT STARTED</button>
+                </div>
+                <div class="column">
+                  <button type= "radio" class="btn btn-danger"   name="STATUS" value="CANCELLED">CANCEL</button>
+                </div>
+              </form>
             </div>
-            <div class="column">
-              <input type= "radio" class="btn btn-success"   name="STATUS" value="COMPLETED">COMPLETED</input>
-            </div>
-            <div class="column">
-              <input type= "radio" class="btn btn-warning"   name="STATUS" value="NOT STARTED">NOT STARTED</input>
-            </div>
-            <div class="column">
-              <input type= "radio" class="btn btn-danger"   name="STATUS" value="CANCELLED">CANCEL</input>
-            </div>
-             <div class="column">
-               <div class="sahi">
-                 <input type= "submit" class="btn btn-danger"  value="UPDATE"></input>
-               </div>
-            </div>
-            </form>
           </div>
         </div>
       </div>
