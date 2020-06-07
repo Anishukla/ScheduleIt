@@ -141,7 +141,7 @@ body
 
 
 
-.card
+.card 
 {
     float: right;
     background-color: transparent;
@@ -230,7 +230,7 @@ body
 
 .intention
 {
-  margin-left: 158px;
+  margin-left: 120px;
 
 }
 .intention h2
@@ -268,13 +268,13 @@ body
   }
   .card
   {
-    margin-right: 280px;
+    margin-right: 250px;
   }
   .intention h2
   {
     margin-left: -10px;
   }
-}
+}  
 @media only screen and (max-width: 1100px)
 {
   .card
@@ -284,13 +284,53 @@ body
 }
 @media only screen and (max-width: 1000px)
 {
+  .card
+  {
+    margin-right: 150px;
+  }
   .intention
   {
-    margin-left: -10px;
+    margin-left: 40px;
   }
 }
 @media only screen and (max-width: 860px)
 {
+  .navbar-header
+  {
+    float: left;
+    width: 50%;
+  }
+  .navbar-header h3
+  {
+    text-align: left;
+    margin-left: 20px; 
+  }
+  .navbar-collapse 
+  {
+    margin-top: 100px;
+    float: right;
+    margin: 0px;
+    width: 50%;
+    border: none;
+  }
+  .navbar-collapse ul
+  {
+    float: right;
+    margin: 0px;
+  }
+  .navbar-collapse ul li
+  {
+    float: left;
+  }
+
+  .navbar-collapse ul li a
+  {
+    display: block;
+    margin: 0px;
+    padding: 12px;
+    font-size: 14px;
+    text-decoration: none;
+  }
   .row
   {
     margin-top: 15px;
@@ -372,6 +412,10 @@ body
     margin: 0px;
     margin-top: 80px;
   }
+  .card
+  {
+    margin-right: 200px;
+  }
   .intention
   {
     margin: 0px;
@@ -382,32 +426,136 @@ body
     width: 60%;
     margin-top: -20px;
   }
-
+  
 }
-@media only screen and (max-width: 530px)
+@media only screen and (max-width: 770px)
 {
-
-  .nav-sidebar ul li a
+  .navbar-header
   {
-    background-color: transparent;
-    color: white;
-    font-size: 8px;
-    text-align: center;
-    padding: 0px;
+    float: left;
+    width: 50%;
+  }
+  .navbar-header h3
+  {
+    text-align: left;
+    margin-left: 20px; 
+  }
+  .navbar-collapse 
+  {
+    margin-top: 100px;
+    float: right;
     margin: 0px;
-    margin-top: 10px;
+    width: 50%;
+    border: none;
   }
-  .main .content-active
+  .navbar-collapse ul
   {
-    float: none;
-    width: 80%;
-    margin-left: 60px;
-    margin-bottom: 30px;
+    float: right;
+    margin: 0px;
   }
-  .main .content-archive
+  .navbar-collapse ul li
   {
-    width: 80%;
-    float: none;
-    margin-left: 60px;
+    float: left;
+  }
+
+  .navbar-collapse ul li a
+  {
+    display: block;
+    margin: 0px;
+    padding: 12px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .card
+  {
+    margin-bottom: 50px;
+    margin-right: 130px;
+  }
+  .intention
+  {
+    margin-top: 0px;
+  }
+  .intention h2
+  {
+    font-size: 20px;
+    width: 60%;
+    margin-top: 200px;
+  }
+}
+@media only screen and (max-width: 650px)
+{
+  .navbar-header
+  {
+    float: left;
+    width: 50%;
+  }
+  .navbar-header h3
+  {
+    text-align: left;
+    margin-left: 20px; 
+  }
+  .navbar-collapse 
+  {
+    margin-top: 100px;
+    float: right;
+    margin: 0px;
+    width: 50%;
+    border: none;
+  }
+  .navbar-collapse ul
+  {
+    float: right;
+    margin: 0px;
+  }
+  .navbar-collapse ul li
+  {
+    float: left;
+  }
+
+  .navbar-collapse ul li a
+  {
+    display: block;
+    margin: 0px;
+    padding: 12px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .card
+  {
+    margin-bottom: 50px;
+    margin-right: 50px;
+  }
+  .intention
+  {
+    margin-top: 0px;
+  }
+  .intention h2
+  {
+    font-size: 20px;
+    width: 60%;
+    margin-top: 200px;
+  }
+}
+@media only screen and (max-width: 550px)
+{
+  .card
+  {
+    margin-bottom: 50px;
+    margin-right: 50px;
+  }
+  .intention
+  {
+    margin-top: 0px;
+    margin-right: 50px;
+  }
+  .intention h2
+  {
+    font-size: 20px;
+    width: 60%;
+    margin-top: 200px;
+  }
+  .column
+  {
+    margin: 10px; 
   }
 }
