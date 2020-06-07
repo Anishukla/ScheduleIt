@@ -129,3 +129,96 @@ body
   width: 100px;
   margin-left: 110px;
 } 
+
+
+
+
+
+@media only screen and (max-width: 650px)
+{
+  .navbar ul
+  {
+    width: 100%;
+    background-color: #005266;
+    transform: translate(0%, -1px);
+  }
+  .navbar ul li a:hover
+  {
+    background: transparent; 
+  }   
+  .form-signin 
+  {
+    max-width: 400px;
+    padding: 55px;
+    margin: 0 auto;
+    margin-top: 60px;
+    background-color: white;
+  }
+  .form-signin .form-signin-heading
+  {
+    margin-top: -8px;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 30px;
+    font-size: 22px;
+    text-align: center;
+  }
+  .form-signin 
+  {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 18px; 
+    font-family: 'Tenali Ramakrishna', sans-serif;
+  }
+  .form-signin .checkbox 
+  {
+
+    font-size: 18px; 
+    font-weight: normal;
+  }
+  .form-signin .form-control 
+  {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 8px;
+    font-size: 15px;
+  }
+  .form-signin .form-control:focus 
+  {
+    z-index: 2;
+  }
+  .form-signin input[type="email"]
+   {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] 
+  {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .form-signin .btn
+  {
+    font-size: 15px;
+    width: 100%;
+    margin-left: 0px;
+  } 
+}
+@media only screen and (max-width: 350px)
+{
+  .navbar ul
+  {
+    width: 100%;
+    background-color: #005266;
+    transform: translate(0%, -1px);
+  }
+  .navbar ul li a:hover
+  {
+    background: transparent; 
+  }   
+  
+}

@@ -53,35 +53,8 @@ body
 .navbar-collapse ul li
 {
   float: left;
-  position: relative;
 }
-.navbar-collapse ul li ul
-{
-  position: absolute;
-  right: 0px;
-  width: 200px;
-  display: none; 
-  border-style: groove;
-  border-radius: 10%;
-  background-color: white;
-  margin-top: 3px; 
-}
-.navbar-collapse ul li:hover ul
-{
-  display: block;
-}
-.navbar-collapse ul li ul li
-{
-  width: 125%;
-  right: 40px;
-  border-radius: 5%;
-  border-bottom: 1px solid black;
-}
-.navbar-collapse ul li ul li a
-{
-  padding: 5px;
-  color: black;
-}
+
 .navbar-collapse ul li a
 {
   display: block;
@@ -90,11 +63,7 @@ body
   font-size: 18px;
   text-decoration: none;
 }
-.navbar-collapse ul li a:hover
-{
-  color: grey; 
-  border-radius: 6%;
-}
+
 /*
  * Sidebar
  */
@@ -304,6 +273,42 @@ body
 }
 @media only screen and (max-width: 770px)
 {
+  .navbar-header
+  {
+    float: left;
+    width: 50%;
+  }
+  .navbar-header h3
+  {
+    text-align: left;
+    margin-left: 20px; 
+  }
+  .navbar-collapse 
+  {
+    margin-top: 100px;
+    float: right;
+    margin: 0px;
+    width: 50%;
+    border: none;
+  }
+  .navbar-collapse ul
+  {
+    float: right;
+    margin: 0px;
+  }
+  .navbar-collapse ul li
+  {
+    float: left;
+  }
+
+  .navbar-collapse ul li a
+  {
+    display: block;
+    margin: 0px;
+    padding: 12px;
+    font-size: 14px;
+    text-decoration: none;
+  }
   .row
   {
     margin-top: 15px;
@@ -328,41 +333,37 @@ body
     padding:0px;
     margin: 0px;
     margin-top: 10px;
-    margin-left: 20px; 
     text-align: center;
+    width: 100%;
     font-family: 'Tenali Ramakrishna', sans-serif;
   }
   .nav-sidebar
   {
-    float: right;
-    padding: 10px;
-    margin: 0px; 
-    margin-right: 15px; 
-
-    list-style: none;
+    width: 100%;
+    background-color: black;
+    margin: 0px;
+    height: 41px;
+    padding: 0px;
+    margin-top: -3px;
   }
   .nav-sidebar ul
   {
-    float: right;
-    padding: 0px; 
-    margin: 0px;
-    top: 40px;
-    right: 0px;
+    padding: 0px;
+    margin: 0px; 
+    height: 41px;
     width: 100%;
-    height: 60px;
+    margin-top: 0px;
     background-color: black;
-    position: absolute;
     list-style: none;
   }
   .nav-sidebar ul li 
   {
     padding: 0px;
     text-align: center;
-    padding: 5px;
+    padding: 1px;
     margin-top: 0px;
     width: 20%;
-    border-bottom: 1px solid white;
-    border: 1px solid white;
+    float: left;
   }
   .nav-sidebar ul li a
   {
@@ -370,18 +371,9 @@ body
     color: white;
     font-size: 10px;
     text-align: center;
-    padding: 0px;
+    padding: 12px;
     margin: 0px; 
-  }
-  .nav-sidebar .active 
-  {
-    padding: 0px;
-    text-align: center;
-    padding: 5px;
-    margin-top: 0px;
-    width: 20%;
-    border-bottom: 1px solid white;
-    border: 1px solid white;
+    border: 1px solid black;
   }
   .nav-sidebar ul li a i
   {
@@ -397,16 +389,26 @@ body
     width: 100%;
     margin: 0px;
   }
-
-}
-@media only screen and (max-width: 420px)
-{
   .main .page-header
   {
-    margin-top: 90px;
+    margin-top: 60px;
     font-size: 40px;
     margin-left: 20px;
   }
+}
+@media only screen and (max-width: 530px)
+{
+ 
+  .nav-sidebar ul li a
+  {
+    background-color: transparent;
+    color: white;
+    font-size: 8px;
+    text-align: center;
+    padding: 0px;
+    margin: 0px; 
+    margin-top: 10px;
+  } 
   .main .content-active
   {
     float: none;
