@@ -107,7 +107,7 @@ def addtask():
     tdate=form.date.data
     if form.validate_on_submit():
         if tdate < date.today() :
-            flash('Your task has not been created!')
+            flash('USE CORRECT DATE!')
             return render_template('addtask.html', title='New Task', form=form, legend='New Task', name=current_user.username)
         if form.WorkType.data == 'Others':
             new_task = Task(title=form.title.data, content=form.content.data, priority = form.priority.data, date = form.date.data, WorkType = form.Other.data, author=current_user)
