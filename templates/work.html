@@ -110,7 +110,7 @@ Work TO-DO
                         {% if (task.status == "NEW" or task.status == "IN PROGRESS" or task.status == "NOT STARTED") and tdate <= task.date %}
                           <td><a href="{{ url_for('update_task', task_id=task.id) }}">Update</a></td>
                         {% else %}
-                          <td><a class="arcup" href="{{ url_for('update_task', task_id=task.id) }}">Update</a></td>
+                          <td><a class="arcup" href="#">Update</a></td>
                         {% endif %}
     		          		</tr>
                       <tr class="spacer">
