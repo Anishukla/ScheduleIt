@@ -538,24 +538,59 @@ body
 }
 @media only screen and (max-width: 550px)
 {
+  .nav-sidebar ul li a
+  {
+    background-color: transparent;
+    color: white;
+    font-size: 8px;
+    text-align: center;
+    padding: 0px;
+    margin: 0px; 
+    margin-top: 10px;
+  } 
+  .main .btn
+  {  
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+  }
   .card
   {
-    margin-bottom: 50px;
-    margin-right: 50px;
+    width: 100%;
+    margin-right: -20px;
   }
   .intention
   {
     margin-top: 0px;
-    margin-right: 50px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
   }
   .intention h2
   {
-    font-size: 20px;
-    width: 60%;
-    margin-top: 200px;
+    font-size: 15px;
+    width: 100%;
+    margin: 0px;
+    margin-left: 24px;
+    padding: 0px; 
   }
   .column
   {
     margin: 10px; 
+    width: 100%;
+  }
+  .column .btn
+  {
+    width: 220px;
+
+  }
+}
+@media only screen and (max-width: 350px)
+{
+
+  .column .btn
+  {
+    width: 150px;
+
   }
 }
