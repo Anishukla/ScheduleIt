@@ -84,9 +84,11 @@ Dashboard
           {% with messages = get_flashed_messages() %}
             {% if messages %}
               {% for message in messages %}
+                {% if message == 'Your task has been created! %}
                 <div class="alert alert-success" role="alert">
                   <center>{{message}}</center>
                 </div>
+                {% endif %}
               {% endfor %}
             {% endif %}
           {% endwith %}
