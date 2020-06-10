@@ -220,10 +220,6 @@ body
   float: left;
   width: 25%;
 }
-.column .btn
-{
-}
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
