@@ -27,11 +27,6 @@ cffi==1.12.3
 chardet==3.0.4
 Click==7.0
 cloudpickle==1.2.1
-colorama==0.4.1
-conda==4.7.12
-conda-build==3.18.8
-conda-package-handling==1.6.0
-conda-verify==3.4.2
 conllu==2.2
 contextlib2==0.5.5
 cryptography==2.7
