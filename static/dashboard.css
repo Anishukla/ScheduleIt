@@ -270,9 +270,18 @@ body
   {
     margin-left: 200px; 
   }
+  .main .alert
+  {
+    margin-left: 40px;
+  }
 }
 @media only screen and (max-width: 770px)
 {
+  .main .alert
+  {
+    margin-top: 50px;
+    margin-left: 40px;
+  }
   .navbar-header
   {
     float: left;
@@ -409,6 +418,11 @@ body
     margin: 0px; 
     margin-top: 10px;
   } 
+  .main .alert
+  {
+    margin-top: 50px;
+    margin-left: 40px;
+  }
   .main .content-active
   {
     float: none;
