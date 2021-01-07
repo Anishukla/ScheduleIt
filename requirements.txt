@@ -23,7 +23,7 @@ jsonschema==3.0.1
 keyring==18.0.0
 libarchive-c==2.8
 locket==0.2.0
-lxml==4.3.4
+lxml==4.6.2
 msgpack==0.5.6
 mysql-connector-python==8.0.18
 nmslib==2.0.5
